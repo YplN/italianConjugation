@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italian Conjugation Practice</title>
+    <script src="verbs.js"></script>
+    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Italian Conjugation Practice</h1>
+    <div id="settings_container">
+        <div id="difficulty_container">
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+        </select>
+        </div>
+        <div id="tense_container">
+            <label for="tenses">Tenses</label>
+            <select multiple id="tenses" multiple>
+                <option value="presente">Presente</option>
+                <option value="imperfetto">Imperfetto</option>
+                <option value="passato prossimo" selected>Passato prossimo</option>
+                <option value="passato remoto">Passato remoto</option>
+                <option value="trapassato remoto">Trepassato remoto</option>
+                <option value="trapassato prossimo">Trepassato prossimo</option>
+                <option value="futuro">Futuro</option>
+                <option value="futuro anteriore">Futuro anteriore</option>
+                <!-- Add more tenses -->
+        </select>
+        </div>
+        <div>
+            <button onclick="hideSettings(); showQuestion(); generateQuestion();">Start</button>
+        </div>
+    </div>
+    <div id="question_container">
+        <div id="prompt_container">
+            <div id="verb"></div>
+            <div id="tense"></div>
+            <p id="prompt"></p>
+        </div>
+        <div id="answer_container">
+            <span id="pronoun"></span>
+            <input type="text" id="answer" placeholder="Write here...">
+            <button onclick="submitAnswer()">Submit</button>
+        </div>
+        <div id="hints"></div>
+        <p id="feedback"></p>
+
+        <button id="reset" onclick="resetGame()">Reset</button>
+    </div>
+
+    <div id="progress_container">
+        <div class="progress" id="p_0"></div>
+        <div class="progress" id="p_1"></div>
+        <div class="progress" id="p_2"></div>
+        <div class="progress" id="p_3"></div>
+        <div class="progress" id="p_4"></div>
+        <div class="progress" id="p_5"></div>
+        <div class="progress" id="p_6"></div>
+        <div class="progress" id="p_7"></div>
+        <div class="progress" id="p_8"></div>
+        <div class="progress" id="p_9"></div>
+    </div>
+</body>
+
+</html>
