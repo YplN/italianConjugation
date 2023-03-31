@@ -180,10 +180,8 @@ function onKeyDown(e) {
         const submit_button = document.getElementById('submit_answer');
         if (submit_button.classList.contains('inactive')) {
             generateQuestion();
-            console.log('new question');
         } else {
             submitAnswer();
-            console.log('submit answer');
         }
     } else if (e.key === 'Escape') {
         document.querySelectorAll(".letter-button").forEach(button => {
