@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +7,6 @@
 }
 
 body {
-    background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,9 +16,21 @@ body {
 }
 
 h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #333;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3em;
+    background-image: linear-gradient(90deg, green, white, red);
+    background-size: 75% 5px;
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    transition: all .3s ease-in-out;
+    padding: 0 10px;
+    margin-bottom: 30px;
+    cursor: default;
+}
+
+h1:hover {
+    background-size: 100% 100%;
+    background-position: 0% 100%;
 }
 
 select,
@@ -34,7 +46,7 @@ input {
 }
 
 button {
-    background-color: #007bff;
+    background-color: green;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -44,7 +56,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: red;
 }
 
 button:active {
@@ -67,7 +79,7 @@ button:active {
 
 .letter-button {
     margin: 5px;
-    background-color: #28a745;
+    background-color: green;
     width: 30px;
     display: flex;
     height: 35px;
@@ -76,7 +88,7 @@ button:active {
 }
 
 .letter-button:hover {
-    background-color: #218838;
+    background-color: #59be6f;
 }
 
 .letter-button:active {
@@ -109,7 +121,7 @@ button:active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 400px;
+    width: 300px;
 }
 
 select {
@@ -124,7 +136,6 @@ select {
 #progress_container {
     width: 100%;
     height: 10px;
-    background-color: #000;
     display: flex;
     position: absolute;
     bottom: 0;
@@ -150,6 +161,7 @@ select {
 #pronoun {
     font-size: 25px;
     font-weight: 200;
+    cursor: default;
 }
 
 #answer_container {
@@ -174,4 +186,39 @@ select {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#logo>img {
+    width: 300px;
+}
+
+#start_button {
+    text-align: center;
+    width: 100px;
+    margin-top: 20px;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid green;
+    box-sizing: content-box;
+}
+
+#feedback_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 50px;
+    height: 50px;
+}
+
+#feedback {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.inactive {
+    cursor: not-allowed;
+    background-color: gray;
 }

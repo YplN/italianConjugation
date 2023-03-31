@@ -22,7 +22,11 @@ function generateQuestion() {
     document.getElementById('pronoun').innerText = `${currentPronoun.capitalize()}`;
     document.getElementById('answer').value = '';
     document.getElementById('feedback').style.visibility = 'hidden';
+    document.getElementById('feedback_container').style.visibility = 'hidden';
 
+    const submit_button = document.getElementById("submit_answer");
+    submit_button.classList.remove('inactive');
+    submit_button.addEventListener("click", submitAnswer);
 
     difficulty = document.getElementById('difficulty').value;
 
@@ -38,17 +42,27 @@ function submitAnswer() {
     progressSubBar.style.visibility = 'visible';
 
     const feedback = document.getElementById('feedback');
+    const feedbackContainer = document.getElementById('feedback_container');
 
     if (userAnswer === correctAnswer.toLowerCase()) {
-        feedback.innerText = 'Correct! Good job!';
-        progressSubBar.style.backgroundColor = '#4cbe4c';
+        feedback.innerText = 'Correct! Bravo!';
+        progressSubBar.style.backgroundColor = 'green';
+        feedback.style.color = 'green';
+        document.getElementById('continue').style.backgroundColor = 'green';
     } else {
         feedback.innerText = `Incorrect! The correct answer is ${correctAnswer}.`;
-        progressSubBar.style.backgroundColor = '#ff5a5a';
+        progressSubBar.style.backgroundColor = 'red';
+        feedback.style.color = 'red';
+        document.getElementById('continue').style.backgroundColor = 'red';
     }
 
 
     feedback.style.visibility = 'visible';
+    feedbackContainer.style.visibility = 'visible';
+
+    const submit_button = document.getElementById("submit_answer");
+    submit_button.classList.add('inactive');
+    submit_button.removeEventListener("click", submitAnswer);
 
     if (numQuestion !== 0) {
         document.getElementById(`p_${numQuestion - 1}`).style.borderRadius = '0px';
@@ -59,12 +73,7 @@ function submitAnswer() {
 
     numQuestion++;
 
-    if (numQuestion < 9) {
-        // Generate a new question
-        setTimeout(() => {
-            generateQuestion();
-        }, 1000);
-    } else {
+    if (numQuestion > 9) {
         resetGame();
     }
 }
@@ -168,7 +177,14 @@ function playButtonLetter() {
 function onKeyDown(e) {
     let answerInput = document.getElementById('answer');
     if (e.key === 'Enter') {
-        submitAnswer();
+        const submit_button = document.getElementById('submit_answer');
+        if (submit_button.classList.contains('inactive')) {
+            generateQuestion();
+            console.log('new question');
+        } else {
+            submitAnswer();
+            console.log('submit answer');
+        }
     } else if (e.key === 'Escape') {
         document.querySelectorAll(".letter-button").forEach(button => {
             button.classList.remove('used');
